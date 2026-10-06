@@ -14,10 +14,9 @@ On top of the basic game portal, we added: **user accounts, score tracking, lead
 
 - Browse a list of available games
 - Play games directly in the browser
-- **[Game 1 name]** – short description
-- **[Game 2 name]** – short description
-- **[Game 3 name]** – short description
-- **[Your extra feature]** – short description
+- Some of the games included: **[Clicker Heroes, Mr Mine, Poker Quest]**
+- Added user accounts, score tracking, leaderboard, game ratings
+- Admin features: blocking/unblocking users, adding/deleting games and categories, able to see most played game, able to see all of the users scores...
 
 ## Technologies
 
@@ -62,16 +61,23 @@ The frontend starts on `http://localhost:5173` (the port is shown in the termina
 ## Project Structure
 
 ```
-repository-name/
+src/
 ├── backend/     # Spring Boot application (Java)
 └── frontend/    # Vue.js application
 ```
 
+## Screenshots
+Home page png: <img width="2802" height="1559" alt="image" src="https://github.com/user-attachments/assets/bed2c579-84d1-45d8-b514-b238b4746de0" />
+
+List of games png: <img width="2633" height="1292" alt="image" src="https://github.com/user-attachments/assets/3d792732-340e-4e19-adf6-4aa7632d8e55" />
+
+
+
 
 ## Team
 
-- **Sanja Lukač**
-- **Helena Vasić**
+- **Sanja Lukač** github: sanjal1
+- **Helena Vasić** github: HelenaVasic
 
 ## What We Learned
 
