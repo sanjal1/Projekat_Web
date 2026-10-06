@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <title>Prijava</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Prijava</h3>
+
+                    <div id="errorMsg" class="alert alert-danger d-none"></div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="vas@email.com">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Lozinka</label>
+                        <input type="password" id="lozinka" class="form-control">
+                    </div>
+
+                    <button onclick="login()" class="btn btn-primary w-100">Prijavi se</button>
+
+                    <p class="text-center mt-3">
+                        Nemate nalog? <a href="/register.html">Registrujte se</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/api.js"></script>
+<script>
+
+    async function checkSession() {
+        const res = await api.get('/korisnici/ja');
+        if (res.ok) {
+            window.location.href = '/index.html';
+        }
+    }
+    checkSession();
+
+    async function login() {
+        const email = document.getElementById('email').value;
+        const lozinka = document.getElementById('lozinka').value;
+
+        const res = await api.post('/korisnici/login', { email, lozinka });
+
+        if (res.ok) {
+
+            const korisnik = await res.json();
+
+            localStorage.setItem('uloga', korisnik.uloga);
+            localStorage.setItem('korisnikId', korisnik.id);
+            localStorage.setItem('ime', korisnik.ime);
+
+            window.location.href = '/index.html';
+        } else {
+
+            const greska = await res.text();
+            const errorDiv = document.getElementById('errorMsg');
+            errorDiv.classList.remove('d-none'); // Prikaži poruku
+            errorDiv.textContent = greska;
+        }
+    }
+</script>
+
+</body>
+</html>

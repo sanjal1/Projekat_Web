@@ -3,11 +3,12 @@ package ac.rs.uns.ftn.Projekat_Web.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "igrice")
 public class Igra implements Serializable {
 
     @Id
@@ -25,33 +26,49 @@ public class Igra implements Serializable {
     private String slika;
 
     @Column
-    private Date datum_dodavanja;
+    private LocalDateTime datum_dodavanja;
 
     @Column
     private boolean aktivna;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Igra() {
+        this.naziv = "";
+        this.opis = "";
+        this.URL = "";
+        this.slika = "";
+        this.aktivna = false;
+    }
+
+    public Igra(String naziv, String opis, String URL, String slika, boolean aktivna) {
+        this.naziv = naziv;
+        this.opis = opis;
+        this.URL = URL;
+        this.slika = slika;
+        this.aktivna = aktivna;
+    }
+
+
+    @PrePersist
+    protected void DodavanjeIgrice() {
+        this.datum_dodavanja = LocalDateTime.now();
+    }
+
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "kategorija_id")
     private Kategorija kategorija;
 
-    //many to many ili da svaka igra ima samo jedan achivment??
-    //ako ima samo jedan achivment:
-    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "postignuce_id")
-    //private Postignuca postignuce;
-
-    //ako ima vise:
-    @ManyToMany
-    @JoinTable(
-            name = "igra_postignuce",
-            joinColumns = @JoinColumn(name = "igra_id"),
-            inverseJoinColumns = @JoinColumn(name = "postignuce_id")
-    )
+    //vise postignuca moze pripadati 1-noj igri
+    @OneToMany(mappedBy = "igra", cascade = CascadeType.ALL)
     private List<Postignuca> postignuca = new ArrayList<>();
 
     @OneToMany(mappedBy = "igra", cascade = CascadeType.ALL)
     private List<Statistika> statistike;
+
+    @OneToMany(mappedBy = "igra", cascade = CascadeType.ALL)
+    private List<Recenzija> recenzije;
+
 
 
     public Long getId() { return id; }
@@ -78,14 +95,25 @@ public class Igra implements Serializable {
 
     public void setKategorija(Kategorija kategorija) { this.kategorija = kategorija; }
 
-    public Date getDatum_dodavanja() { return datum_dodavanja; }
+    public LocalDateTime getDatum_dodavanja() { return datum_dodavanja; }
 
-    public void setDatum_dodavanja(Date datum_dodavanja) { this.datum_dodavanja = datum_dodavanja; }
+    public void setDatum_dodavanja(LocalDateTime datum_dodavanja) { this.datum_dodavanja = datum_dodavanja; }
 
     public boolean isAktivna() { return aktivna; }
 
     public void setAktivna(boolean aktivna) { this.aktivna = aktivna; }
 
+    public List<Postignuca> getPostignuca() { return postignuca; }
+
+    public void setPostignuca(List<Postignuca> postignuca) { this.postignuca = postignuca; }
+
+    public List<Statistika> getStatistike() { return statistike; }
+
+    public void setStatistike(List<Statistika> statistike) { this.statistike = statistike; }
+
+    public List<Recenzija> getRecenzije() { return recenzije; }
+
+    public void setRecenzije(List<Recenzija> recenzije) { this.recenzije = recenzije; }
 
     @Override
     public String toString() {
@@ -97,5 +125,4 @@ public class Igra implements Serializable {
                 "\nDatum dodavanja: " + datum_dodavanja +
                 "\nAktivna: " + (aktivna ? "Da" : "Ne") + "\n";
     }
-
 }

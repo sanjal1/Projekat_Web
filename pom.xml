@@ -11,9 +11,8 @@
 	<groupId>ac.rs.uns.ftn</groupId>
 	<artifactId>Projekat-Web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
-	<url/>
+	<name>Projekat-Web</name>
+	<description>Projekat za Veb programiranej</description>
 	<licenses>
 		<license/>
 	</licenses>
@@ -58,6 +57,13 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

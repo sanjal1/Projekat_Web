@@ -3,9 +3,11 @@ package ac.rs.uns.ftn.Projekat_Web.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "kategorije")
 public class Kategorija implements Serializable {
 
     @Id
@@ -19,9 +21,24 @@ public class Kategorija implements Serializable {
     private String opis;
 
 
-    @OneToMany(mappedBy = "kategorija", cascade = CascadeType.ALL)
-    private List<Igra> igrice;
+    public Kategorija() {
+        this.naziv = "";
+        this.opis = "";
+    }
 
+    public Kategorija(String naziv, String opis) {
+        this.naziv = naziv;
+        this.opis = opis;
+    }
+
+
+    @OneToMany(mappedBy = "kategorija", cascade = CascadeType.ALL)
+    private List<Igra> igrice = new ArrayList<Igra>();
+
+
+    public List<Igra> getIgrice() { return igrice; }
+
+    public void setIgrice(List<Igra> igrice) { this.igrice = igrice; }
 
     public Long getId() { return id; }
 

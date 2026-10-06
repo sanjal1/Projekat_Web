@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "postignuca")
 public class Postignuca implements Serializable {
 
     @Id
@@ -19,30 +20,43 @@ public class Postignuca implements Serializable {
     @Column
     private String opis;
 
+    private int vremeIgranja;
 
-    @ManyToMany(mappedBy = "postignuca")
-    private List<Korisnik> korisnici =  new ArrayList<>();
+    private int brojPokretanjaIgrice;
 
-    //ako ima 1 igra 1 post:
-    //@OneToMany(mappedBy = "postignuce", cascade = CascadeType.ALL)
-    //private List<Igra> igrice = new ArrayList<>();
 
-    //ako ima vise:
-    @ManyToMany(mappedBy = "postignuca")
-    private List<Igra> igrice = new ArrayList<>();
+    public Postignuca() {
+        this.naziv = "";
+        this.opis = "";
+    }
+
+    public Postignuca(String naziv, String opis) {
+        this.naziv = naziv;
+        this.opis = opis;
+    }
+
+
+    @ManyToOne
+    @JoinColumn(name = "korisnik_id")
+    private Korisnik korisnici;
+
+    //jedna igra po postignucu
+    @ManyToOne
+    @JoinColumn(name = "igra_id")
+    private Igra igra;
 
 
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id;}
 
-    public List<Korisnik> getKorisnici() { return korisnici; }
+    public int getVremeIgranja() { return vremeIgranja; }
 
-    public void setKorisnici(List<Korisnik> korisnici) { this.korisnici = korisnici; }
+    public void setVremeIgranja(int vremeIgranja) { this.vremeIgranja = vremeIgranja; }
 
-    public List<Igra> getIgrice() { return igrice; }
+    public int getBrojPokretanjaIgrice() { return brojPokretanjaIgrice; }
 
-    public void setIgrice(List<Igra> igrice) { this.igrice = igrice; }
+    public void setBrojPokretanjaIgrice(int brojPokretanjaIgrice) { this.brojPokretanjaIgrice = brojPokretanjaIgrice; }
 
     public String getNaziv() { return naziv; }
 
@@ -52,6 +66,13 @@ public class Postignuca implements Serializable {
 
     public void setOpis(String opis) { this.opis = opis; }
 
+    public Korisnik getKorisnici() { return korisnici; }
+
+    public void setKorisnici(Korisnik korisnici) { this.korisnici = korisnici; }
+
+    public Igra getIgra() { return igra; }
+
+    public void setIgra(Igra igra) { this.igra = igra; }
 
     @Override
     public String toString() {
@@ -60,6 +81,5 @@ public class Postignuca implements Serializable {
                 "\nNaziv: '" + naziv + '\'' +
                 "\nOpis: '" + opis + '\'' + "\n";
     }
-
 
 }

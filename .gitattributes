@@ -1,2 +1,6 @@
+<<<<<<< HEAD
+* text=auto eol=lf
+=======
 /mvnw text eol=lf
 *.cmd text eol=crlf
+>>>>>>> 5d74f2345c3632cf6e6ebf6def502c678cfb3c6a
