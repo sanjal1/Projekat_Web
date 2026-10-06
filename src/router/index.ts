@@ -1,27 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // login i pocetna strana
-import LoginView from "@/views/LoginView.vue";
-import RegistracijaView from "@/views/RegistracijaView.vue";
-import HomeView from "@/views/HomeView.vue"
+import LoginView from "@/frontend/LoginView.vue";
+import RegistracijaView from "@/frontend/RegistracijaView.vue";
+import HomeView from "@/frontend/HomeView.vue"
 
 //korisnik
-import ProfilView from "@/views/ProfilView.vue";
-import StatistikaView from "@/views/StatistikaView.vue";
+import ProfilView from "@/frontend/ProfilView.vue";
+import StatistikaView from "@/frontend/StatistikaView.vue";
 
 // igrice
-import SveIgre from "@/views/SveIgre.vue";
-import IgraDetalji from "@/views/IgraDetalji.vue";
-import DodajIgru from "@/views/DodajIgru.vue";
-import IzmeniIgru from "@/views/IzmeniIgru.vue";
+import SveIgre from "@/frontend/SveIgre.vue";
+import IgraDetalji from "@/frontend/IgraDetalji.vue";
+import DodajIgru from "@/frontend/DodajIgru.vue";
+import IzmeniIgru from "@/frontend/IzmeniIgru.vue";
 
 // admin
-import AdminIgre from "@/views/AdminIgre.vue";
-import AdminKategorija from "@/views/AdminKategorija.vue";
-import AdminKorisnici from "@/views/AdminKorisnici.vue";
-import AdminDashboard from "@/views/AdminDashboard.vue";
-import AdminMonitoring from "@/views/AdminMonitoring.vue";
-import Postignuca from "@/views/Postignuca.vue";
+import AdminIgre from "@/frontend/AdminIgre.vue";
+import AdminKategorija from "@/frontend/AdminKategorija.vue";
+import AdminKorisnici from "@/frontend/AdminKorisnici.vue";
+import AdminDashboard from "@/frontend/AdminDashboard.vue";
+import AdminMonitoring from "@/frontend/AdminMonitoring.vue";
+import Postignuca from "@/frontend/Postignuca.vue";
 
 
 
