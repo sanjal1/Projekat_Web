@@ -1,48 +1,86 @@
-# web_front
+# Browser Games Web App
 
-This template should help get you started developing with Vue 3 in Vite.
+A web application with simple browser games, inspired by the Friv game site, with additional features like achievements, game categories...
 
-## Recommended IDE Setup
+This project was made for the **Web Programming** course at the Faculty of Technical Sciences, Novi Sad. It was a team project for two students.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## About the Project
 
-## Recommended Browser Setup
+The assignment was to build a web app that takes inspiration from the Friv game site. We built a simpler version of a browser games portal, where users can pick a game from a list and play it directly in the browser.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+On top of the basic game portal, we added: **user accounts, score tracking, leaderboard, game ratings and more features that the admin can access**.
 
-## Type Support for `.vue` Imports in TS
+## Features
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- Browse a list of available games
+- Play games directly in the browser
+- **[Game 1 name]** – short description
+- **[Game 2 name]** – short description
+- **[Game 3 name]** – short description
+- **[Your extra feature]** – short description
 
-## Customize configuration
+## Technologies
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+| Part | Technology |
+|------|------------|
+| Backend | Java, Spring Boot |
+| Frontend | Vue.js |
+| IDE | IntelliJ IDEA |
+| Version control | Git, GitHub |
+| Database | H2 |
 
-## Project Setup
+## Getting Started
 
-```sh
+### Requirements
+
+- Java **[version 17]** or newer
+- Node.js and npm
+- Git
+
+### Run the backend
+
+```bash
+git clone https://github.com/username/repository-name.git
+cd repository-name/backend
+./mvnw spring-boot:run
+```
+
+The backend starts on `http://localhost:8080`.
+
+### Run the frontend
+
+```bash
+cd ../frontend
 npm install
+npm run serve
 ```
 
-### Compile and Hot-Reload for Development
+The frontend starts on `http://localhost:5173` (the port is shown in the terminal).
 
-```sh
-npm run dev
+> The folder names and commands above may differ in this project. Adjust them to match the repository.
+
+## Project Structure
+
+```
+repository-name/
+├── backend/     # Spring Boot application (Java)
+└── frontend/    # Vue.js application
 ```
 
-### Type-Check, Compile and Minify for Production
 
-```sh
-npm run build
-```
+## Team
 
-### Lint with [ESLint](https://eslint.org/)
+- **Sanja Lukač**
+- **Helena Vasić**
 
-```sh
-npm run lint
-```
+## What We Learned
+
+- Building a full-stack web application with a Java backend and a Vue.js frontend
+- Connecting a frontend to a Spring Boot backend
+- Working as a team and sharing the work with Git
+
+## Course Information
+
+- **Course:** Web Programming
+- **Professor:** Miroslav Zarić
+- **Faculty:** Faculty of Technical Sciences, Novi Sad
